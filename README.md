@@ -197,10 +197,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Contact & Support
 
-- **Website**: [Jharkhand Tourism Official](https://jharkhnadtourism.gov.in)
+- **Website**: [Jharkhand Tourism Official](https://sharmaxx001.github.io/jharkhand-tourism-platform/)
 - **Email**: info@jharkhnadtourism.com
-- **Phone**: +91 1234567890
-- **Address**: Tourism Bhawan, Ranchi, Jharkhand
+- **Phone**: +91 9408551991
+- **Address**: Pune, Maharashtra
 
 ## 🔮 Future Enhancements
 

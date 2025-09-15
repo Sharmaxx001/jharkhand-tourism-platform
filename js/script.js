@@ -5,6 +5,18 @@
 // Global variables
 let currentRating = 0;
 let chatMessages = [];
+let isVoiceEnabled = false;
+let recognition;
+let speechSynthesis = window.speechSynthesis;
+let isTyping = false;
+let welcomeScreenShown = true;
+let conversationContext = [];
+let userPreferences = {
+    travelStyle: null,
+    interests: [],
+    budget: null,
+    duration: null
+};
 
 // DOM Content Loaded Event
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,8 +29,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Set initial active tab
     showTab('home');
     
+    // Show welcome animation
+    showPageWelcome();
+    
     console.log('Jharkhand Tourism Platform initialized successfully!');
 });
+
+// Page Welcome Animation
+function showPageWelcome() {
+    // Show notification about AI guide after a short delay
+    setTimeout(() => {
+        showNotification('👋 Hi there! Click the AI Guide button to get personalized travel recommendations!', 'success');
+        
+        // Add pulse animation to chat FAB
+        const chatFab = document.getElementById('chatbot-fab');
+        if (chatFab) {
+            chatFab.style.animation = 'notificationPulse 2s infinite';
+            setTimeout(() => {
+                chatFab.style.animation = 'breathe 3s ease-in-out infinite';
+            }, 6000);
+        }
+    }, 3000);
+}
 
 // Navigation Functions
 function initializeNavigation() {
@@ -342,13 +374,92 @@ function shareItinerary() {
     }
 }
 
-// Chatbot Functions
+// Enhanced Chatbot Functions
 function openChatbot() {
     openModal('chatbot-modal');
+    initializeChatbot();
+    updateCharacterCount();
+    animateAvatarEntry();
+}
+
+function initializeChatbot() {
+    // Initialize voice recognition if supported
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+        const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+        
+        recognition.onresult = function(event) {
+            const transcript = event.results[0][0].transcript;
+            document.getElementById('chat-input').value = transcript;
+            sendChatMessage();
+        };
+        
+        recognition.onerror = function(event) {
+            console.error('Speech recognition error:', event.error);
+            showNotification('Voice recognition error. Please try again.', 'info');
+        };
+        
+        recognition.onend = function() {
+            document.getElementById('voice-btn').classList.remove('recording');
+        };
+    }
     
-    // Initialize chat if empty
-    if (chatMessages.length === 0) {
-        addBotMessage("Hello! I'm your virtual tourism assistant. I can help you with information about places, hotels, transportation, and local culture in Jharkhand. What would you like to know?");
+    // Show welcome screen for new users
+    if (welcomeScreenShown && chatMessages.length === 0) {
+        showWelcomeScreen();
+    }
+}
+
+function animateAvatarEntry() {
+    const avatar = document.getElementById('ai-avatar');
+    if (avatar) {
+        avatar.style.transform = 'scale(0.8)';
+        avatar.style.opacity = '0.5';
+        
+        setTimeout(() => {
+            avatar.style.transform = 'scale(1)';
+            avatar.style.opacity = '1';
+            avatar.style.transition = 'all 0.5s ease';
+        }, 200);
+    }
+}
+
+function showWelcomeScreen() {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const messagesContainer = document.getElementById('chatbot-messages');
+    
+    if (welcomeScreen && messagesContainer) {
+        messagesContainer.innerHTML = '';
+        messagesContainer.appendChild(welcomeScreen);
+        welcomeScreen.style.display = 'block';
+        
+        // Animate floating icons
+        const icons = welcomeScreen.querySelectorAll('.floating-icon');
+        icons.forEach((icon, index) => {
+            setTimeout(() => {
+                icon.style.animation = `float 3s ease-in-out infinite`;
+                icon.style.animationDelay = `${index * 0.5}s`;
+            }, index * 200);
+        });
+    }
+}
+
+function sendSuggestion(suggestion) {
+    document.getElementById('chat-input').value = suggestion;
+    sendChatMessage();
+}
+
+function hideWelcomeScreen() {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    if (welcomeScreen && welcomeScreenShown) {
+        welcomeScreen.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            welcomeScreen.style.display = 'none';
+            welcomeScreenShown = false;
+        }, 300);
     }
 }
 
@@ -356,15 +467,87 @@ function sendChatMessage() {
     const input = document.getElementById('chat-input');
     const message = input.value.trim();
     
-    if (message) {
-        addUserMessage(message);
-        input.value = '';
+    if (!message) return;
+    
+    hideWelcomeScreen();
+    addUserMessage(message);
+    input.value = '';
+    updateCharacterCount();
+    
+    // Show typing indicator
+    showTypingIndicator();
+    
+    // Update conversation context
+    conversationContext.push({ type: 'user', message: message });
+    
+    // Simulate AI processing with more realistic delay
+    const delay = Math.random() * 2000 + 1000; // 1-3 seconds
+    setTimeout(() => {
+        hideTypingIndicator();
+        const response = generateEnhancedBotResponse(message);
+        addBotMessage(response.message);
         
-        // Simulate bot processing
+        // Show quick suggestions if provided
+        if (response.suggestions) {
+            showQuickSuggestions(response.suggestions);
+        }
+        
+        // Speak response if voice is enabled
+        if (isVoiceEnabled && response.message) {
+            speakMessage(response.message);
+        }
+        
+        conversationContext.push({ type: 'bot', message: response.message });
+    }, delay);
+}
+
+function showTypingIndicator() {
+    isTyping = true;
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) {
+        indicator.style.display = 'flex';
+        
+        // Animate avatar while typing
+        const avatar = document.getElementById('ai-avatar');
+        if (avatar) {
+            avatar.style.animation = 'thinking 1.5s ease-in-out infinite';
+        }
+    }
+}
+
+function hideTypingIndicator() {
+    isTyping = false;
+    const indicator = document.getElementById('typing-indicator');
+    if (indicator) {
+        indicator.style.display = 'none';
+        
+        // Stop avatar animation
+        const avatar = document.getElementById('ai-avatar');
+        if (avatar) {
+            avatar.style.animation = '';
+        }
+    }
+}
+
+function showQuickSuggestions(suggestions) {
+    const container = document.getElementById('quick-suggestions');
+    if (container && suggestions.length > 0) {
+        container.innerHTML = '';
+        
+        suggestions.forEach(suggestion => {
+            const btn = document.createElement('button');
+            btn.className = 'suggestion-chip';
+            btn.innerHTML = `<i class="${suggestion.icon}"></i> ${suggestion.text}`;
+            btn.onclick = () => sendSuggestion(suggestion.text);
+            container.appendChild(btn);
+        });
+        
+        container.style.display = 'block';
+        
+        // Auto-hide after 10 seconds
         setTimeout(() => {
-            const response = generateBotResponse(message);
-            addBotMessage(response);
-        }, 1000);
+            container.style.display = 'none';
+        }, 10000);
     }
 }
 
@@ -376,64 +559,482 @@ function addUserMessage(message) {
         <div class="message-content">
             <p>${message}</p>
         </div>
-        <i class="fas fa-user"></i>
+        <div class="message-avatar">
+            <i class="fas fa-user"></i>
+        </div>
     `;
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
     
-    chatMessages.push({ type: 'user', message: message });
+    chatMessages.push({ type: 'user', message: message, timestamp: new Date() });
 }
 
 function addBotMessage(message) {
     const messagesDiv = document.getElementById('chatbot-messages');
     const messageDiv = document.createElement('div');
     messageDiv.className = 'bot-message';
+    
+    // Add interactive elements if message contains special patterns
+    const processedMessage = processMessageWithInteractiveElements(message);
+    
     messageDiv.innerHTML = `
-        <i class="fas fa-robot"></i>
+        <div class="message-avatar">
+            <i class="fas fa-robot"></i>
+        </div>
         <div class="message-content">
-            <p>${message}</p>
+            ${processedMessage}
         </div>
     `;
     messagesDiv.appendChild(messageDiv);
     messagesDiv.scrollTop = messagesDiv.scrollHeight;
     
-    chatMessages.push({ type: 'bot', message: message });
+    chatMessages.push({ type: 'bot', message: message, timestamp: new Date() });
+    
+    // Add some personality with avatar reactions
+    animateAvatarReaction();
 }
 
-function generateBotResponse(userMessage) {
-    const message = userMessage.toLowerCase();
+function processMessageWithInteractiveElements(message) {
+    // Convert plain text to interactive elements
+    let processedMessage = message;
     
-    // Simple keyword-based responses
-    if (message.includes('netarhat') || message.includes('hill station')) {
-        return "Netarhat is known as the 'Queen of Chotanagpur' and is famous for its beautiful sunrises and sunsets. The best time to visit is from October to March. You can stay at the Forest Rest House or local guesthouses.";
-    } else if (message.includes('hundru') || message.includes('waterfall')) {
-        return "Hundru Falls is a spectacular 98-meter high waterfall located about 45 km from Ranchi. It's best visited during monsoon season (July-September) when the water flow is at its peak. The area is perfect for picnics and photography.";
-    } else if (message.includes('betla') || message.includes('tiger') || message.includes('safari')) {
-        return "Betla National Park is home to tigers, elephants, and many other wildlife species. Safari timings are typically 6:00-9:00 AM and 2:30-5:30 PM. I recommend booking your safari in advance, especially during peak season (November-March).";
-    } else if (message.includes('hotel') || message.includes('stay') || message.includes('accommodation')) {
-        return "Jharkhand offers various accommodation options from budget hotels (₹800-2000/night) to luxury resorts (₹3000-8000/night). For authentic experiences, I highly recommend tribal homestays where you can learn about local culture and traditions.";
-    } else if (message.includes('food') || message.includes('cuisine') || message.includes('eat')) {
-        return "Don't miss trying local delicacies like Dhuska (rice pancake), Rugra (mushroom curry), Bamboo shoot curry, and Handia (traditional rice beer). Most tribal homestays serve authentic organic meals.";
-    } else if (message.includes('transport') || message.includes('travel') || message.includes('reach')) {
-        return "Ranchi has the nearest airport with connections to major cities. The state is well-connected by railways and roads. For local travel, you can hire taxis, use state buses, or rent bikes for nearby attractions.";
-    } else if (message.includes('weather') || message.includes('climate') || message.includes('season')) {
-        return "The best time to visit Jharkhand is from October to March when the weather is pleasant. Summers can be quite hot (up to 42°C) and monsoons bring heavy rainfall (June-September).";
-    } else if (message.includes('culture') || message.includes('tribe') || message.includes('traditional')) {
-        return "Jharkhand is rich in tribal culture with communities like Santhal, Oraon, and Munda. You can experience traditional dance, music, handicrafts like Dokra art, and festivals like Sohrai and Karam. Many villages offer cultural programs for visitors.";
-    } else if (message.includes('cost') || message.includes('budget') || message.includes('price')) {
-        return "A budget trip to Jharkhand can cost ₹1500-2500 per day including accommodation, food, and local transport. Mid-range travelers should budget ₹3000-5000 per day, while luxury travelers can expect to spend ₹6000+ per day.";
-    } else if (message.includes('shopping') || message.includes('buy') || message.includes('market')) {
-        return "Visit our Marketplace section for authentic tribal handicrafts! You can buy Dokra art, handwoven textiles, bamboo crafts, and tribal jewelry. Main Road in Ranchi and local markets in Deoghar are great for shopping.";
-    } else {
-        return "That's a great question! I'd be happy to help you with specific information about places to visit, accommodations, food, transportation, or cultural experiences in Jharkhand. Could you please be more specific about what you'd like to know?";
+    // Add clickable place names
+    const places = ['Netarhat', 'Hundru Falls', 'Betla National Park', 'Deoghar', 'Patratu Valley'];
+    places.forEach(place => {
+        const regex = new RegExp(place, 'gi');
+        processedMessage = processedMessage.replace(regex, 
+            `<span class="interactive-place" onclick="showPlaceDetails('${place.toLowerCase().replace(' ', '')}')">${place}</span>`);
+    });
+    
+    // Add clickable prices
+    processedMessage = processedMessage.replace(/₹([0-9,]+)/g, 
+        '<span class="interactive-price">₹$1</span>');
+    
+    // Convert to paragraphs if it's plain text
+    if (!processedMessage.includes('<') && processedMessage.length > 50) {
+        processedMessage = `<p>${processedMessage}</p>`;
+    }
+    
+    return processedMessage;
+}
+
+function animateAvatarReaction() {
+    const avatar = document.getElementById('ai-avatar');
+    if (avatar) {
+        // Random reactions
+        const reactions = ['happy', 'excited', 'thinking'];
+        const reaction = reactions[Math.floor(Math.random() * reactions.length)];
+        
+        avatar.classList.add(reaction);
+        setTimeout(() => {
+            avatar.classList.remove(reaction);
+        }, 2000);
     }
 }
 
-// Handle Enter key in chat input
+// Enhanced Bot Response with AI-like personality and context awareness
+function generateEnhancedBotResponse(userMessage) {
+    const message = userMessage.toLowerCase();
+    
+    // Analyze user preferences from conversation
+    analyzeUserPreferences(message);
+    
+    // Generate contextual response
+    let response = {
+        message: '',
+        suggestions: []
+    };
+    
+    // Greeting and initial interaction
+    if (message.includes('hello') || message.includes('hi') || message.includes('hey')) {
+        response.message = "Hello there! 🙋‍♂️ I'm excited to help you explore the beautiful state of Jharkhand. Whether you're interested in breathtaking waterfalls, wildlife adventures, or rich tribal culture, I've got you covered!";
+        response.suggestions = [
+            { icon: 'fas fa-mountain', text: 'Show me scenic places' },
+            { icon: 'fas fa-bed', text: 'Find accommodations' },
+            { icon: 'fas fa-calendar-alt', text: 'Plan a weekend trip' }
+        ];
+    }
+    
+    // Place-specific responses with personality
+    else if (message.includes('netarhat') || message.includes('hill station')) {
+        response.message = "Ah, Netarhat! 🌄 The 'Queen of Chotanagpur' is absolutely magical. I love how the sunrise paints the entire valley in golden hues. It's about 45km from Latehar and perfect for a romantic getaway or peaceful retreat. October to March offers the most pleasant weather for your visit.";
+        response.suggestions = [
+            { icon: 'fas fa-camera', text: 'Best photo spots in Netarhat' },
+            { icon: 'fas fa-bed', text: 'Where to stay in Netarhat' },
+            { icon: 'fas fa-route', text: 'How to reach Netarhat' }
+        ];
+    }
+    
+    else if (message.includes('hundru') || (message.includes('waterfall') && !message.includes('all'))) {
+        response.message = "Hundru Falls is spectacular! 💧 At 98 meters, it's like nature's own skyscraper of water. The sound is thunderous during monsoons (July-September), and you can actually feel the mist from quite a distance. Pro tip: visit early morning for the best photography and fewer crowds!";
+        response.suggestions = [
+            { icon: 'fas fa-camera', text: 'Photography tips for Hundru' },
+            { icon: 'fas fa-map-marked-alt', text: 'Other waterfalls nearby' },
+            { icon: 'fas fa-utensils', text: 'Food options near Hundru' }
+        ];
+    }
+    
+    else if (message.includes('betla') || message.includes('tiger') || message.includes('safari') || message.includes('wildlife')) {
+        response.message = "Betla National Park is where the wild things are! 🐅 It's one of India's oldest tiger reserves. Early morning safaris (6-9 AM) are magical - that's when you're most likely to spot tigers, elephants, and other wildlife. The ancient fort ruins inside add a mysterious historical element to your adventure.";
+        response.suggestions = [
+            { icon: 'fas fa-binoculars', text: 'Book safari online' },
+            { icon: 'fas fa-camera', text: 'Wildlife photography tips' },
+            { icon: 'fas fa-bed', text: 'Stay near Betla Park' }
+        ];
+    }
+    
+    else if (message.includes('hotel') || message.includes('stay') || message.includes('accommodation')) {
+        const accommodationResponse = getPersonalizedAccommodationResponse();
+        response.message = accommodationResponse.message;
+        response.suggestions = accommodationResponse.suggestions;
+    }
+    
+    else if (message.includes('food') || message.includes('cuisine') || message.includes('eat')) {
+        response.message = "Oh, the flavors of Jharkhand! 🍽️ You absolutely must try Dhuska - it's like a crispy rice pancake that's perfect with curry. Rugra (mushroom curry) is a local favorite, and Handia (traditional rice beer) is quite the experience. Tribal homestays serve the most authentic organic meals you'll ever taste!";
+        response.suggestions = [
+            { icon: 'fas fa-utensils', text: 'Best local restaurants' },
+            { icon: 'fas fa-home', text: 'Homestays with authentic food' },
+            { icon: 'fas fa-leaf', text: 'Vegetarian food options' }
+        ];
+    }
+    
+    else if (message.includes('plan') || message.includes('trip') || message.includes('itinerary')) {
+        response.message = "I'd love to help plan your perfect Jharkhand adventure! 🗺️ Tell me - are you more of an adventure seeker, culture enthusiast, or nature lover? And how many days do you have? I can create a personalized itinerary that matches your style perfectly.";
+        response.suggestions = [
+            { icon: 'fas fa-hiking', text: 'Adventure-focused trip' },
+            { icon: 'fas fa-users', text: 'Cultural immersion experience' },
+            { icon: 'fas fa-leaf', text: 'Nature and wildlife focus' }
+        ];
+    }
+    
+    else if (message.includes('budget') || message.includes('cost') || message.includes('price') || message.includes('expensive')) {
+        response.message = "Great question about costs! 💰 Jharkhand is quite budget-friendly. For backpackers, ₹1,500-2,500/day covers everything. Mid-range travelers can expect ₹3,000-5,000/day for comfort, while luxury experiences run ₹6,000+ daily. Tribal homestays offer amazing value for authentic experiences!";
+        response.suggestions = [
+            { icon: 'fas fa-calculator', text: 'Calculate my trip cost' },
+            { icon: 'fas fa-home', text: 'Budget accommodation options' },
+            { icon: 'fas fa-gem', text: 'Luxury experiences available' }
+        ];
+    }
+    
+    else if (message.includes('weather') || message.includes('climate') || message.includes('season') || message.includes('best time')) {
+        response.message = "Perfect timing question! 🌤️ October to March is absolutely ideal - pleasant days, cool nights, perfect for everything from trekking to sightseeing. Summer gets quite toasty (up to 42°C), while monsoons (June-September) make waterfalls spectacular but travel tricky.";
+        response.suggestions = [
+            { icon: 'fas fa-calendar', text: 'Check current weather' },
+            { icon: 'fas fa-suitcase', text: 'What to pack for my visit' },
+            { icon: 'fas fa-umbrella', text: 'Monsoon travel tips' }
+        ];
+    }
+    
+    else if (message.includes('culture') || message.includes('tribe') || message.includes('traditional')) {
+        response.message = "Jharkhand's tribal heritage is absolutely fascinating! 🎭 The Santhal, Oraon, and Munda communities have preserved such beautiful traditions. You can witness traditional dances, learn Dokra art (bronze casting), and participate in festivals like Sohrai. Many villages offer immersive cultural programs.";
+        response.suggestions = [
+            { icon: 'fas fa-palette', text: 'Learn traditional crafts' },
+            { icon: 'fas fa-music', text: 'Experience tribal festivals' },
+            { icon: 'fas fa-home', text: 'Cultural homestay programs' }
+        ];
+    }
+    
+    else if (message.includes('thanks') || message.includes('thank you')) {
+        response.message = "You're so welcome! 😊 I'm thrilled I could help you discover more about Jharkhand. Feel free to ask me anything else - I'm here to make your trip absolutely amazing!";
+        response.suggestions = [
+            { icon: 'fas fa-share', text: 'Share this with friends' },
+            { icon: 'fas fa-bookmark', text: 'Save for later' },
+            { icon: 'fas fa-phone', text: 'Contact local guides' }
+        ];
+    }
+    
+    // Default response with personality
+    else {
+        response.message = "Hmm, that's an interesting question! 🤔 I want to give you the most helpful answer possible. Could you tell me a bit more about what specifically interests you about Jharkhand? Are you looking for places to visit, planning logistics, or curious about experiences?";
+        response.suggestions = [
+            { icon: 'fas fa-map-marked-alt', text: 'Places to visit' },
+            { icon: 'fas fa-route', text: 'Travel planning help' },
+            { icon: 'fas fa-heart', text: 'Unique experiences' }
+        ];
+    }
+    
+    return response;
+}
+
+function getPersonalizedAccommodationResponse() {
+    let response = {
+        message: "Great question about stays! 🏨 ",
+        suggestions: []
+    };
+    
+    if (userPreferences.budget === 'low') {
+        response.message += "For budget-conscious travelers, I'd recommend tribal homestays (₹800-1,500/night) - they're authentic and incredibly welcoming. Government rest houses are also great value for money.";
+    } else if (userPreferences.budget === 'high') {
+        response.message += "For luxury stays, try the forest resorts like Netarhat Forest Resort (₹3,500/night) with stunning valley views, or premium eco-lodges near Betla National Park.";
+    } else {
+        response.message += "Jharkhand has wonderful options for every budget! From authentic tribal homestays (₹800-2,000) to luxury forest resorts (₹3,500+). For the most memorable experience, I'd suggest mixing both!";
+    }
+    
+    response.suggestions = [
+        { icon: 'fas fa-home', text: 'Find homestays' },
+        { icon: 'fas fa-star', text: 'Luxury resorts' },
+        { icon: 'fas fa-tree', text: 'Eco-lodges' }
+    ];
+    
+    return response;
+}
+
+function analyzeUserPreferences(message) {
+    // Extract budget preferences
+    if (message.includes('budget') || message.includes('cheap') || message.includes('affordable')) {
+        userPreferences.budget = 'low';
+    } else if (message.includes('luxury') || message.includes('premium') || message.includes('expensive')) {
+        userPreferences.budget = 'high';
+    }
+    
+    // Extract interests
+    if (message.includes('adventure') || message.includes('trek') || message.includes('hiking')) {
+        if (!userPreferences.interests.includes('adventure')) {
+            userPreferences.interests.push('adventure');
+        }
+    }
+    if (message.includes('culture') || message.includes('tradition') || message.includes('tribal')) {
+        if (!userPreferences.interests.includes('culture')) {
+            userPreferences.interests.push('culture');
+        }
+    }
+    if (message.includes('wildlife') || message.includes('nature') || message.includes('forest')) {
+        if (!userPreferences.interests.includes('nature')) {
+            userPreferences.interests.push('nature');
+        }
+    }
+    
+    // Extract duration
+    const durationMatch = message.match(/(\d+)\s*(day|days|week|weeks)/i);
+    if (durationMatch) {
+        userPreferences.duration = durationMatch[0];
+    }
+}
+
+// Voice Features
+function toggleVoice() {
+    isVoiceEnabled = !isVoiceEnabled;
+    const voiceBtn = document.getElementById('voice-toggle');
+    const statusText = document.querySelector('.status-text');
+    
+    if (voiceBtn) {
+        if (isVoiceEnabled) {
+            voiceBtn.style.background = '#10b981';
+            statusText.textContent = 'Voice On';
+            showNotification('Voice responses enabled! 🔊', 'success');
+        } else {
+            voiceBtn.style.background = 'rgba(255, 255, 255, 0.2)';
+            statusText.textContent = 'Online';
+            showNotification('Voice responses disabled', 'info');
+        }
+    }
+}
+
+function startVoiceRecording() {
+    if (!recognition) {
+        showNotification('Voice input not supported on this browser', 'info');
+        return;
+    }
+    
+    const voiceBtn = document.getElementById('voice-btn');
+    if (voiceBtn.classList.contains('recording')) {
+        recognition.stop();
+        voiceBtn.classList.remove('recording');
+    } else {
+        recognition.start();
+        voiceBtn.classList.add('recording');
+        showNotification('Listening... Speak now! 🎤', 'info');
+    }
+}
+
+function speakMessage(message) {
+    if (speechSynthesis && isVoiceEnabled) {
+        // Clean message for speech
+        const cleanMessage = message.replace(/[🌄💧🐅🍽️🗺️💰🌤️🎭😊🤔]/g, '').replace(/₹/g, 'rupees');
+        
+        const utterance = new SpeechSynthesisUtterance(cleanMessage);
+        utterance.rate = 0.9;
+        utterance.pitch = 1;
+        utterance.volume = 0.8;
+        
+        // Try to use a pleasant voice
+        const voices = speechSynthesis.getVoices();
+        const femaleVoice = voices.find(voice => voice.name.includes('Female') || voice.name.includes('Zira'));
+        if (femaleVoice) {
+            utterance.voice = femaleVoice;
+        }
+        
+        speechSynthesis.speak(utterance);
+    }
+}
+
+function attachFile() {
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = 'image/*';
+    input.onchange = function(event) {
+        const file = event.target.files[0];
+        if (file) {
+            handleImageUpload(file);
+        }
+    };
+    input.click();
+}
+
+function handleImageUpload(file) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const imageData = e.target.result;
+        
+        // Add user message with image
+        hideWelcomeScreen();
+        const messagesDiv = document.getElementById('chatbot-messages');
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'user-message';
+        messageDiv.innerHTML = `
+            <div class="message-content">
+                <img src="${imageData}" alt="Uploaded image" style="max-width: 200px; border-radius: 10px; margin-bottom: 10px;">
+                <p>I uploaded this image. Can you tell me more about this place?</p>
+            </div>
+            <div class="message-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+        `;
+        messagesDiv.appendChild(messageDiv);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        
+        // Simulate AI image recognition response
+        setTimeout(() => {
+            addBotMessage("That's a beautiful image! 📸 While I can't identify specific locations from photos yet, I'd love to help you discover amazing places in Jharkhand. Could you tell me what type of scenery or experience you're looking for?");
+        }, 1500);
+    };
+    reader.readAsDataURL(file);
+}
+
+function clearChat() {
+    chatMessages = [];
+    conversationContext = [];
+    welcomeScreenShown = true;
+    userPreferences = { travelStyle: null, interests: [], budget: null, duration: null };
+    
+    const messagesContainer = document.getElementById('chatbot-messages');
+    messagesContainer.innerHTML = '';
+    showWelcomeScreen();
+    
+    showNotification('Chat cleared! Starting fresh 🆕', 'success');
+}
+
+function updateCharacterCount() {
+    const input = document.getElementById('chat-input');
+    const counter = document.getElementById('char-count');
+    
+    if (input && counter) {
+        const length = input.value.length;
+        counter.textContent = length;
+        
+        const counterElement = counter.parentElement;
+        counterElement.classList.remove('warning', 'danger');
+        
+        if (length > 400) {
+            counterElement.classList.add('danger');
+        } else if (length > 300) {
+            counterElement.classList.add('warning');
+        }
+    }
+}
+
+// Add avatar animation keyframes via CSS
+if (!document.getElementById('avatar-animations')) {
+    const style = document.createElement('style');
+    style.id = 'avatar-animations';
+    style.textContent = `
+        .ai-avatar.thinking {
+            animation: thinking 1.5s ease-in-out infinite;
+        }
+        
+        .ai-avatar.happy {
+            animation: happy 0.8s ease-in-out;
+        }
+        
+        .ai-avatar.excited {
+            animation: excited 1s ease-in-out;
+        }
+        
+        @keyframes thinking {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.05) rotate(2deg); }
+        }
+        
+        @keyframes happy {
+            0%, 100% { transform: scale(1); }
+            25% { transform: scale(1.1) rotate(-5deg); }
+            75% { transform: scale(1.1) rotate(5deg); }
+        }
+        
+        @keyframes excited {
+            0%, 100% { transform: scale(1) translateY(0); }
+            25% { transform: scale(1.15) translateY(-3px); }
+            75% { transform: scale(1.05) translateY(-1px); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+        
+        .interactive-place {
+            color: var(--primary-orange);
+            cursor: pointer;
+            text-decoration: underline;
+            font-weight: 600;
+        }
+        
+        .interactive-place:hover {
+            background: rgba(255, 107, 53, 0.1);
+            border-radius: 3px;
+            padding: 2px 4px;
+        }
+        
+        .interactive-price {
+            color: #10b981;
+            font-weight: 600;
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Enhanced input event listeners
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && e.target.id === 'chat-input') {
         e.preventDefault();
         sendChatMessage();
+    }
+});
+
+// Real-time character counting
+document.addEventListener('input', function(e) {
+    if (e.target.id === 'chat-input') {
+        updateCharacterCount();
+    }
+});
+
+// Avatar interaction
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.ai-avatar')) {
+        const avatar = document.getElementById('ai-avatar');
+        avatar.classList.add('happy');
+        setTimeout(() => avatar.classList.remove('happy'), 800);
+        
+        const greetings = [
+            'Hello there! Ready to explore Jharkhand?',
+            'Hi! What adventure can I help you plan today?',
+            'Hey! I\'m excited to help you discover Jharkhand!'
+        ];
+        
+        if (welcomeScreenShown) {
+            const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
+            document.getElementById('chat-input').placeholder = randomGreeting;
+        }
     }
 });
 
@@ -705,14 +1306,20 @@ function addToItinerary(placeName) {
 }
 
 // Marketplace Functions
-function filterProducts(category) {
+function filterProducts(category, e, el) {
     const products = document.querySelectorAll('.product-card');
     const filterBtns = document.querySelectorAll('.filter-btn');
-    
+
     // Update active filter button
     filterBtns.forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
+    const targetBtn = el || (e && (e.currentTarget || (e.target && e.target.closest && e.target.closest('button'))));
+    if (targetBtn) {
+        targetBtn.classList.add('active');
+    } else {
+        const fallbackBtn = document.querySelector(`.filter-btn[onclick*="filterProducts('${category}')"]`);
+        if (fallbackBtn) fallbackBtn.classList.add('active');
+    }
+
     // Show/hide products
     products.forEach(product => {
         if (category === 'all' || product.getAttribute('data-category') === category) {
@@ -724,11 +1331,13 @@ function filterProducts(category) {
     });
 }
 
-function addToWishlist(productId) {
+function addToWishlist(productId, e, el) {
     // Placeholder for wishlist functionality
-    const btn = event.target;
+    const btn = el || (e && (e.currentTarget || (e.target && e.target.closest && e.target.closest('button')))) || document.querySelector(`button[onclick*="addToWishlist('${productId}')"]`);
+    if (!btn) return;
     const icon = btn.querySelector('i');
-    
+    if (!icon) return;
+
     if (icon.classList.contains('far')) {
         icon.classList.replace('far', 'fas');
         btn.style.color = 'var(--gold)';
@@ -973,12 +1582,132 @@ if ('serviceWorker' in navigator) {
     });
 }
 
+// Enhanced Trip Planner Variables
+let currentStep = 1;
+let totalSteps = 3;
+let tripData = {
+    duration: null,
+    interests: [],
+    budget: null
+};
+
+// Enhanced Trip Planner Functions
+function selectDuration(duration) {
+    // Remove previous selection
+    document.querySelectorAll('.option-card').forEach(card => card.classList.remove('selected'));
+    // Add selection to clicked card
+    document.querySelector(`[data-value="${duration}"]`).classList.add('selected');
+    tripData.duration = duration;
+}
+
+function toggleInterest(interest) {
+    const card = document.querySelector(`.interest-card[data-value="${interest}"]`);
+    if (card.classList.contains('selected')) {
+        card.classList.remove('selected');
+        tripData.interests = tripData.interests.filter(i => i !== interest);
+    } else {
+        card.classList.add('selected');
+        tripData.interests.push(interest);
+    }
+}
+
+function selectBudget(budget) {
+    // Remove previous selection
+    document.querySelectorAll('.budget-card').forEach(card => card.classList.remove('selected'));
+    // Add selection to clicked card
+    document.querySelector(`.budget-card[data-value="${budget}"]`).classList.add('selected');
+    tripData.budget = budget;
+}
+
+function nextStep() {
+    if (currentStep === 1 && !tripData.duration) {
+        showNotification('Please select a trip duration', 'info');
+        return;
+    }
+    if (currentStep === 2 && tripData.interests.length === 0) {
+        showNotification('Please select at least one interest', 'info');
+        return;
+    }
+    
+    if (currentStep < totalSteps) {
+        // Hide current step
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep++;
+        // Show next step
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        
+        updateNavigationButtons();
+    }
+}
+
+function previousStep() {
+    if (currentStep > 1) {
+        // Hide current step
+        document.querySelector(`[data-step="${currentStep}"]`).classList.remove('active');
+        currentStep--;
+        // Show previous step
+        document.querySelector(`[data-step="${currentStep}"]`).classList.add('active');
+        
+        updateNavigationButtons();
+    }
+}
+
+function updateNavigationButtons() {
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const generateBtn = document.getElementById('generate-btn');
+    
+    // Show/hide previous button
+    prevBtn.style.display = currentStep > 1 ? 'inline-flex' : 'none';
+    
+    // Show/hide next/generate buttons
+    if (currentStep === totalSteps) {
+        nextBtn.style.display = 'none';
+        generateBtn.style.display = 'inline-flex';
+    } else {
+        nextBtn.style.display = 'inline-flex';
+        generateBtn.style.display = 'none';
+    }
+}
+
+function resetTripPlanner() {
+    currentStep = 1;
+    tripData = { duration: null, interests: [], budget: null };
+    
+    // Reset all selections
+    document.querySelectorAll('.option-card, .interest-card, .budget-card').forEach(card => {
+        card.classList.remove('selected');
+    });
+    
+    // Show first step
+    document.querySelectorAll('.form-step').forEach(step => step.classList.remove('active'));
+    document.querySelector('[data-step="1"]').classList.add('active');
+    
+    updateNavigationButtons();
+}
+
+// Override the openItineraryPlanner function
+function openItineraryPlanner() {
+    resetTripPlanner();
+    openModal('itinerary-modal');
+}
+
 // Export functions for global access
 window.showTab = showTab;
 window.openItineraryPlanner = openItineraryPlanner;
 window.generateItinerary = generateItinerary;
+window.selectDuration = selectDuration;
+window.toggleInterest = toggleInterest;
+window.selectBudget = selectBudget;
+window.nextStep = nextStep;
+window.previousStep = previousStep;
 window.openChatbot = openChatbot;
 window.sendChatMessage = sendChatMessage;
+window.sendSuggestion = sendSuggestion;
+window.toggleVoice = toggleVoice;
+window.startVoiceRecording = startVoiceRecording;
+window.attachFile = attachFile;
+window.clearChat = clearChat;
 window.openFeedback = openFeedback;
 window.setRating = setRating;
 window.submitFeedback = submitFeedback;

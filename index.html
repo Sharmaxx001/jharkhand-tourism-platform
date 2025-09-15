@@ -3,47 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <title>Jharkhand Tourism - Discover Eco & Cultural Heritage</title>
     <meta name="description" content="Explore Jharkhand's natural beauty and rich cultural heritage. Find places to visit, hotels, government schemes, and local artisan marketplaces.">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20240915">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body style="background: #ffffff !important; background-color: #ffffff !important;">
     <!-- Header -->
     <header class="header">
         <nav class="navbar">
             <div class="nav-container">
-                <div class="nav-logo">
+                <div class="nav-logo" onclick="showTab('home')" style="cursor: pointer;">
                     <i class="fas fa-leaf"></i>
-                    <span>Jharkhand Tourism</span>
+                    <span>EcoJharkhand</span>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
                     <li class="nav-item">
                         <a href="#home" class="nav-link active" data-tab="home">
-                            <i class="fas fa-home"></i>Home
+                            Home
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#places" class="nav-link" data-tab="places">
-                            <i class="fas fa-mountain"></i>Places to Visit
+                            Places
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#hotels" class="nav-link" data-tab="hotels">
-                            <i class="fas fa-bed"></i>Hotels & Homestays
+                            Hotels
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#trip-planner" class="nav-link" data-tab="trip-planner">
+                            Trip Planner
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#cultural-heritage" class="nav-link" data-tab="cultural-heritage">
+                            Cultural Heritage
                         </a>
                     </li>
                     <li class="nav-item">
                         <a href="#schemes" class="nav-link" data-tab="schemes">
-                            <i class="fas fa-landmark"></i>Government Schemes
+                            Guides
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#marketplace" class="nav-link" data-tab="marketplace">
-                            <i class="fas fa-store"></i>Marketplace
+                        <a href="#marketplace" class="nav-link contact" data-tab="marketplace">
+                            Contact
                         </a>
                     </li>
                 </ul>
@@ -57,17 +70,17 @@
     </header>
 
     <!-- Main Content -->
-    <main class="main">
+    <main class="main" style="background: #ffffff !important; background-color: #ffffff !important;">
         <!-- Home Section -->
-        <section id="home" class="tab-content active">
+        <section id="home" class="tab-content active" style="background: #ffffff !important; background-color: #ffffff !important;">
             <!-- Hero Section -->
             <div class="hero">
                 <div class="hero-content">
-                    <h1 class="hero-title">Discover Jharkhand's Natural & Cultural Heritage</h1>
-                    <p class="hero-subtitle">Experience the pristine beauty of waterfalls, wildlife, and rich tribal culture</p>
+                    <h1 class="hero-title">Discover the Enchanting Landscapes</h1>
+                    <p class="hero-subtitle">Explore the rich cultural heritage and breathtaking natural wonders of Jharkhand</p>
                     <div class="hero-buttons">
-                        <button class="btn btn-primary" onclick="showTab('places')">Explore Places</button>
-                        <button class="btn btn-secondary" onclick="openItineraryPlanner()">Plan Your Trip</button>
+                        <button class="btn btn-primary" onclick="showTab('places')">Explore</button>
+                        <button class="btn btn-secondary" onclick="openItineraryPlanner()">Book Now</button>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -279,6 +292,221 @@
             </div>
         </section>
 
+        <!-- Trip Planner Section -->
+        <section id="trip-planner" class="tab-content" style="background: #ffffff !important; background-color: #ffffff !important;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Plan Your Perfect Trip</h2>
+                    <p class="section-subtitle">Choose from our curated location-wise itineraries designed for different interests and durations</p>
+                </div>
+
+                <!-- Trip Plans Grid -->
+                <div class="trip-plans-grid">
+                    <!-- Ranchi Circuit -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3" alt="Ranchi Circuit" loading="lazy">
+                            <div class="trip-duration-badge">3 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Ranchi Heritage Circuit</h3>
+                            <p class="trip-plan-subtitle">Urban exploration with cultural sites</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Jagannath Temple</span>
+                                <span class="highlight-tag">Rock Garden</span>
+                                <span class="highlight-tag">Tagore Hill</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Starts from Ranchi</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Best for Families</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹8,500 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+
+                    <!-- Netarhat Adventure -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3" alt="Netarhat Adventure" loading="lazy">
+                            <div class="trip-duration-badge">5 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Netarhat Nature Escape</h3>
+                            <p class="trip-plan-subtitle">Hill station with sunrise views</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Sunrise Point</span>
+                                <span class="highlight-tag">Valley Views</span>
+                                <span class="highlight-tag">Betla Safari</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Netarhat Base</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Nature Lovers</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹15,500 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+
+                    <!-- Deoghar Spiritual -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3" alt="Deoghar Spiritual" loading="lazy">
+                            <div class="trip-duration-badge">2 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Deoghar Spiritual Journey</h3>
+                            <p class="trip-plan-subtitle">Sacred temples and pilgrimage sites</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Baidyanath Temple</span>
+                                <span class="highlight-tag">Nandan Pahar</span>
+                                <span class="highlight-tag">Tapovan</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Deoghar Station</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Spiritual Seekers</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹5,500 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+
+                    <!-- Waterfalls Circuit -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3" alt="Waterfalls Circuit" loading="lazy">
+                            <div class="trip-duration-badge">4 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Jharkhand Waterfalls Trail</h3>
+                            <p class="trip-plan-subtitle">Cascading waters and natural pools</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Hundru Falls</span>
+                                <span class="highlight-tag">Jonha Falls</span>
+                                <span class="highlight-tag">Dassam Falls</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Multiple Locations</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Adventure Enthusiasts</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹12,000 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+
+                    <!-- Tribal Culture Experience -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3" alt="Tribal Culture" loading="lazy">
+                            <div class="trip-duration-badge">6 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Tribal Culture Immersion</h3>
+                            <p class="trip-plan-subtitle">Authentic homestays and traditions</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Homestays</span>
+                                <span class="highlight-tag">Cultural Shows</span>
+                                <span class="highlight-tag">Handicrafts</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Rural Villages</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Cultural Enthusiasts</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹18,500 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+
+                    <!-- Wildlife Safari -->
+                    <div class="trip-plan-card">
+                        <div class="trip-plan-header">
+                            <img src="https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3" alt="Wildlife Safari" loading="lazy">
+                            <div class="trip-duration-badge">3 Days</div>
+                        </div>
+                        <div class="trip-plan-content">
+                            <h3>Betla Wildlife Safari</h3>
+                            <p class="trip-plan-subtitle">Tigers, elephants, and forest trails</p>
+                            <div class="trip-highlights">
+                                <span class="highlight-tag">Tiger Safari</span>
+                                <span class="highlight-tag">Elephant Sighting</span>
+                                <span class="highlight-tag">Bird Watching</span>
+                            </div>
+                            <div class="trip-details">
+                                <div class="detail-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>Betla National Park</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Wildlife Photographers</span>
+                                </div>
+                                <div class="detail-item">
+                                    <i class="fas fa-rupee-sign"></i>
+                                    <span>₹11,000 per person</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-primary trip-plan-btn">View Itinerary</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Trip Planning -->
+                <div class="custom-trip-section">
+                    <h3>Need a Custom Itinerary?</h3>
+                    <p>Let our travel experts create a personalized trip plan just for you</p>
+                    <div class="custom-trip-actions">
+                        <button class="btn btn-outline" onclick="openItineraryPlanner()">Create Custom Trip</button>
+                        <button class="btn btn-secondary" onclick="openChatbot()">Talk to Expert</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Hotels & Homestays Section -->
         <section id="hotels" class="tab-content">
             <div class="container">
@@ -429,6 +657,462 @@
                                 </div>
                             </div>
                             <p>"Netarhat Forest Resort exceeded expectations. The sunrise view from our room was breathtaking!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cultural Heritage Section -->
+        <section id="cultural-heritage" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Cultural Heritage of Jharkhand</h2>
+                    <p class="section-subtitle">Discover the rich traditions, vibrant festivals, and ancient customs of Jharkhand's tribal communities</p>
+                </div>
+
+                <!-- Cultural Significance -->
+                <div class="heritage-section">
+                    <div class="heritage-intro">
+                        <div class="intro-content">
+                            <h3>The Heart of Tribal India</h3>
+                            <p>Jharkhand, literally meaning "The Land of Forests," is home to India's largest tribal population with over 30 distinct tribal communities. This state is a living museum of ancient traditions, where age-old customs blend seamlessly with modern life, creating a unique cultural tapestry that has remained largely unchanged for centuries.</p>
+                            <p>The tribal culture of Jharkhand is characterized by its deep connection to nature, rich oral traditions, vibrant art forms, and sustainable living practices that have been passed down through generations.</p>
+                        </div>
+                        <div class="intro-image">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3" alt="Tribal Culture" loading="lazy">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Major Tribal Communities -->
+                <div class="tribes-section">
+                    <h3 class="sub-section-title">Major Tribal Communities</h3>
+                    <div class="tribes-grid">
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h4>Santhal</h4>
+                            <p class="tribe-population">Largest tribal group (36% of tribal population)</p>
+                            <p>The Santhals are known for their rich musical traditions, including the famous Santhal dance forms and the use of traditional instruments like Madal, Flute, and Dholak. They practice Sarna religion and are skilled in agriculture and hunting.</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Music & Dance</span>
+                                <span class="feature-tag">Agriculture</span>
+                                <span class="feature-tag">Sarna Religion</span>
+                            </div>
+                        </div>
+
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-leaf"></i>
+                            </div>
+                            <h4>Oraon (Kurukh)</h4>
+                            <p class="tribe-population">Second largest group (22% of tribal population)</p>
+                            <p>The Oraons are known for their expertise in terrace farming and their unique Kurukh language. They have a rich tradition of folk tales, seasonal festivals, and are famous for their dance form called "Jhumar" and "Paika" dance during harvest season.</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Terrace Farming</span>
+                                <span class="feature-tag">Kurukh Language</span>
+                                <span class="feature-tag">Jhumar Dance</span>
+                            </div>
+                        </div>
+
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-hammer"></i>
+                            </div>
+                            <h4>Munda</h4>
+                            <p class="tribe-population">Third largest group (18% of tribal population)</p>
+                            <p>The Mundas are historically significant as they led the famous Munda Rebellion under Birsa Munda. They are skilled in metalwork, particularly iron smelting, and are known for their traditional governing system called "Parha" and their sacred groves called "Sarna."</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Metalwork</span>
+                                <span class="feature-tag">Iron Smelting</span>
+                                <span class="feature-tag">Birsa Movement</span>
+                            </div>
+                        </div>
+
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <h4>Ho</h4>
+                            <p class="tribe-population">Fourth largest group (12% of tribal population)</p>
+                            <p>The Ho tribe is primarily found in the Kolhan region and are closely related to the Mundas. They are known for their traditional village councils, unique marriage customs, and their expertise in rice cultivation in hilly terrains.</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Village Councils</span>
+                                <span class="feature-tag">Rice Cultivation</span>
+                                <span class="feature-tag">Kolhan Region</span>
+                            </div>
+                        </div>
+
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <h4>Kharia</h4>
+                            <p class="tribe-population">Notable forest-dwelling community</p>
+                            <p>The Kharias are traditionally forest dwellers known for their deep knowledge of medicinal plants and forest conservation. They practice shifting cultivation and have unique rock painting traditions that date back centuries.</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Forest Dwelling</span>
+                                <span class="feature-tag">Medicinal Plants</span>
+                                <span class="feature-tag">Rock Paintings</span>
+                            </div>
+                        </div>
+
+                        <div class="tribe-card">
+                            <div class="tribe-icon">
+                                <i class="fas fa-fish"></i>
+                            </div>
+                            <h4>Bhumij</h4>
+                            <p class="tribe-population">Skilled in fishing and hunting</p>
+                            <p>The Bhumij tribe is known for their traditional fishing techniques and their role as intermediate cultivators. They have a rich tradition of folk songs called "Bhumij Geet" and are expert hunters and gatherers.</p>
+                            <div class="tribe-features">
+                                <span class="feature-tag">Fishing Techniques</span>
+                                <span class="feature-tag">Folk Songs</span>
+                                <span class="feature-tag">Hunting & Gathering</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Festivals and Celebrations -->
+                <div class="festivals-section">
+                    <h3 class="sub-section-title">Traditional Festivals & Celebrations</h3>
+                    <div class="festivals-grid">
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3" alt="Sohrai Festival" loading="lazy">
+                                <div class="festival-badge">Harvest Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Sohrai</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> November - December (Post-harvest)</p>
+                                <p>The most important festival of Jharkhand, Sohrai is celebrated after the rice harvest. Houses are decorated with beautiful Sohrai paintings using natural colors, cattle are worshipped, and the entire community comes together for feasting and dancing.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Sohrai Paintings</span>
+                                    <span class="fest-tag">Cattle Worship</span>
+                                    <span class="fest-tag">Community Feast</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa?ixlib=rb-4.0.3" alt="Karam Festival" loading="lazy">
+                                <div class="festival-badge">Monsoon Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Karam</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> August - September (Monsoon)</p>
+                                <p>Dedicated to Karam Devta (the god of power, youth, and youthfulness), this festival celebrates the relationship between humans and nature. Young branches of the Karam tree are brought home and worshipped with traditional songs and dances.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Nature Worship</span>
+                                    <span class="fest-tag">Karam Tree</span>
+                                    <span class="fest-tag">Folk Songs</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1578761499019-d9ea44d8f64a?ixlib=rb-4.0.3" alt="Tusu Festival" loading="lazy">
+                                <div class="festival-badge">Winter Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Tusu Parab</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> December - January (Winter Solstice)</p>
+                                <p>A month-long celebration honoring the sun god, Tusu Parab features beautiful decorative items called 'Tusu', traditional songs, and concludes with the immersion of Tusu decorations in rivers, symbolizing the transition from winter to spring.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Sun Worship</span>
+                                    <span class="fest-tag">Tusu Decorations</span>
+                                    <span class="fest-tag">River Immersion</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?ixlib=rb-4.0.3" alt="Baha Festival" loading="lazy">
+                                <div class="festival-badge">Spring Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Baha Parab</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> February - March (Spring)</p>
+                                <p>The spring festival of the Santhal community, Baha celebrates the flowering of Sal trees. The festival marks new beginnings, with rituals performed for prosperity, and features traditional Santhal dances and community gatherings.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Sal Flowers</span>
+                                    <span class="fest-tag">New Beginnings</span>
+                                    <span class="fest-tag">Santhal Dance</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1541692641319-981cc79ee10e?ixlib=rb-4.0.3" alt="Jani Shikar" loading="lazy">
+                                <div class="festival-badge">Community Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Jani Shikar</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> Various times (Community-based)</p>
+                                <p>A unique festival where the entire village comes together for community hunting and fishing. It strengthens social bonds and ensures equitable distribution of resources among all community members, reflecting the cooperative spirit of tribal society.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Community Hunting</span>
+                                    <span class="fest-tag">Social Bonds</span>
+                                    <span class="fest-tag">Resource Sharing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="festival-card">
+                            <div class="festival-image">
+                                <img src="https://images.unsplash.com/photo-1588417849225-f7fcd68f6b36?ixlib=rb-4.0.3" alt="Bandna Festival" loading="lazy">
+                                <div class="festival-badge">Cattle Festival</div>
+                            </div>
+                            <div class="festival-content">
+                                <h4>Bandna</h4>
+                                <p class="festival-time"><i class="fas fa-calendar"></i> October - November (Pre-harvest)</p>
+                                <p>A festival dedicated to cattle worship, Bandna celebrates the bond between farmers and their cattle. Cattle are bathed, decorated, and fed special food. The festival reflects the agricultural lifestyle and the importance of cattle in rural economy.</p>
+                                <div class="festival-features">
+                                    <span class="fest-tag">Cattle Decoration</span>
+                                    <span class="fest-tag">Agricultural Life</span>
+                                    <span class="fest-tag">Farmer-Cattle Bond</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Traditional Arts and Crafts -->
+                <div class="arts-crafts-section">
+                    <h3 class="sub-section-title">Traditional Arts & Crafts</h3>
+                    <div class="arts-grid">
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1582719471137-c3967ffb1c42?ixlib=rb-4.0.3" alt="Sohrai Art" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Sohrai & Kohvar Paintings</h4>
+                                <p>Ancient wall art traditions practiced by women using natural pigments like ochre, charcoal, and white clay. These paintings depict flora, fauna, and geometric patterns, and are recognized by UNESCO for their cultural significance.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Natural Pigments</span>
+                                    <span class="art-tag">Women's Art</span>
+                                    <span class="art-tag">UNESCO Recognized</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3" alt="Dokra Art" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Dokra Metal Craft</h4>
+                                <p>Ancient lost-wax casting technique used to create brass and bronze artifacts. Dokra artisans create figurines, jewelry, utensils, and decorative items using traditional methods passed down through generations.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Lost-wax Casting</span>
+                                    <span class="art-tag">Brass & Bronze</span>
+                                    <span class="art-tag">Ancient Technique</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3" alt="Bamboo Craft" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Bamboo & Cane Craft</h4>
+                                <p>Skilled artisans create everyday utility items, decorative pieces, and furniture using locally available bamboo and cane. These eco-friendly crafts represent sustainable living practices of tribal communities.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Eco-friendly</span>
+                                    <span class="art-tag">Utility Items</span>
+                                    <span class="art-tag">Sustainable</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1580928854788-cb74bde6a5b4?ixlib=rb-4.0.3" alt="Tribal Jewelry" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Traditional Jewelry</h4>
+                                <p>Intricate silver jewelry including Hasuli (neck ornament), Khopa (hair pin), and various earrings and armlets. Each piece has cultural significance and is often passed down as family heirlooms.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Silver Work</span>
+                                    <span class="art-tag">Cultural Symbols</span>
+                                    <span class="art-tag">Family Heirlooms</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3" alt="Pottery" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Traditional Pottery</h4>
+                                <p>Clay pots, water storage vessels, and decorative items made using traditional techniques. The pottery reflects the practical needs of rural life and features unique designs and natural firing methods.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Clay Work</span>
+                                    <span class="art-tag">Functional Art</span>
+                                    <span class="art-tag">Natural Firing</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="art-card">
+                            <div class="art-image">
+                                <img src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?ixlib=rb-4.0.3" alt="Handloom" loading="lazy">
+                            </div>
+                            <div class="art-content">
+                                <h4>Handloom Textiles</h4>
+                                <p>Traditional weaving techniques produce beautiful fabrics with tribal motifs. Women weave cotton and silk into sarees, gamcha (towels), and other garments using natural dyes and traditional looms.</p>
+                                <div class="art-details">
+                                    <span class="art-tag">Handloom</span>
+                                    <span class="art-tag">Natural Dyes</span>
+                                    <span class="art-tag">Tribal Motifs</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Experiences -->
+                <div class="experiences-section">
+                    <h3 class="sub-section-title">Authentic Cultural Experiences</h3>
+                    <div class="experiences-grid">
+                        <div class="experience-card">
+                            <div class="experience-icon">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h4>Tribal Homestays</h4>
+                            <p>Live with tribal families, participate in daily activities, learn traditional cooking methods, and understand the indigenous way of life firsthand.</p>
+                            <ul class="experience-features">
+                                <li>Stay in traditional homes</li>
+                                <li>Learn tribal cooking</li>
+                                <li>Participate in daily rituals</li>
+                                <li>Stories around bonfire</li>
+                            </ul>
+                            <button class="btn btn-outline">Book Experience</button>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="experience-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <h4>Art Workshops</h4>
+                            <p>Learn traditional art forms like Sohrai painting, Dokra metal craft, and bamboo weaving directly from master artisans in their workshops.</p>
+                            <ul class="experience-features">
+                                <li>Hands-on learning</li>
+                                <li>Master artisan guidance</li>
+                                <li>Take home your creation</li>
+                                <li>Certificate of participation</li>
+                            </ul>
+                            <button class="btn btn-outline">Join Workshop</button>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="experience-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <h4>Cultural Performances</h4>
+                            <p>Witness authentic tribal dances, music performances, and storytelling sessions that have been preserved for generations.</p>
+                            <ul class="experience-features">
+                                <li>Traditional dance forms</li>
+                                <li>Folk music concerts</li>
+                                <li>Storytelling sessions</li>
+                                <li>Interactive participation</li>
+                            </ul>
+                            <button class="btn btn-outline">View Schedule</button>
+                        </div>
+
+                        <div class="experience-card">
+                            <div class="experience-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h4>Traditional Cuisine</h4>
+                            <p>Taste authentic tribal cuisine prepared using traditional methods, local ingredients, and centuries-old recipes.</p>
+                            <ul class="experience-features">
+                                <li>Organic tribal food</li>
+                                <li>Traditional cooking methods</li>
+                                <li>Local ingredients</li>
+                                <li>Cultural significance of dishes</li>
+                            </ul>
+                            <button class="btn btn-outline">Food Tours</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Heritage Sites -->
+                <div class="heritage-sites-section">
+                    <h3 class="sub-section-title">Important Cultural Heritage Sites</h3>
+                    <div class="sites-grid">
+                        <div class="site-card">
+                            <img src="https://images.unsplash.com/photo-1581833971358-2c8b550f87b3?ixlib=rb-4.0.3" alt="Birsa Munda Museum" loading="lazy">
+                            <div class="site-content">
+                                <h4>Birsa Munda Museum, Ranchi</h4>
+                                <p>Dedicated to the legendary tribal freedom fighter Birsa Munda, this museum showcases tribal history, culture, and the freedom struggle.</p>
+                                <div class="site-features">
+                                    <span class="site-tag">Freedom Fighter</span>
+                                    <span class="site-tag">Tribal History</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="site-card">
+                            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?ixlib=rb-4.0.3" alt="Rock Paintings" loading="lazy">
+                            <div class="site-content">
+                                <h4>Isco Rock Paintings, Hazaribagh</h4>
+                                <p>Ancient rock art depicting hunting scenes, animals, and human figures, providing insights into prehistoric tribal life and beliefs.</p>
+                                <div class="site-features">
+                                    <span class="site-tag">Prehistoric Art</span>
+                                    <span class="site-tag">Archaeological Site</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="site-card">
+                            <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3" alt="Maluti Temples" loading="lazy">
+                            <div class="site-content">
+                                <h4>Maluti Temples, Dumka</h4>
+                                <p>A cluster of 108 terracotta temples built between 17th-19th centuries, showcasing the synthesis of tribal and Hindu architectural styles.</p>
+                                <div class="site-features">
+                                    <span class="site-tag">Terracotta Art</span>
+                                    <span class="site-tag">Architectural Heritage</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Tourism Information -->
+                <div class="cultural-info-section">
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Cultural Tourism Guidelines</h3>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-grid">
+                                <div class="info-item">
+                                    <h4>Respect Local Customs</h4>
+                                    <p>Always seek permission before photographing people or sacred sites. Dress modestly and follow local customs during festivals and ceremonies.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4>Support Local Communities</h4>
+                                    <p>Buy directly from artisans, stay in community-run homestays, and hire local guides to ensure tourism benefits reach the tribal communities.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4>Preserve Cultural Heritage</h4>
+                                    <p>Participate responsibly in cultural activities, learn about the significance of traditions, and help preserve these ancient customs for future generations.</p>
+                                </div>
+                                <div class="info-item">
+                                    <h4>Best Time to Visit</h4>
+                                    <p>Festival seasons (October to March) offer the richest cultural experiences, but cultural activities and homestays are available year-round.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -608,11 +1292,11 @@
 
                 <!-- Categories Filter -->
                 <div class="marketplace-filters">
-                    <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
-                    <button class="filter-btn" onclick="filterProducts('handicrafts')">Handicrafts</button>
-                    <button class="filter-btn" onclick="filterProducts('textiles')">Textiles</button>
-                    <button class="filter-btn" onclick="filterProducts('jewelry')">Jewelry</button>
-                    <button class="filter-btn" onclick="filterProducts('pottery')">Pottery</button>
+<button class="filter-btn active" onclick="filterProducts('all', event, this)">All Products</button>
+<button class="filter-btn" onclick="filterProducts('handicrafts', event, this)">Handicrafts</button>
+<button class="filter-btn" onclick="filterProducts('textiles', event, this)">Textiles</button>
+<button class="filter-btn" onclick="filterProducts('jewelry', event, this)">Jewelry</button>
+<button class="filter-btn" onclick="filterProducts('pottery', event, this)">Pottery</button>
                 </div>
 
                 <!-- Products Grid -->
@@ -635,7 +1319,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('dokra-elephant')">
+<button class="btn btn-outline" onclick="addToWishlist('dokra-elephant', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -661,7 +1345,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('santhali-saree')">
+<button class="btn btn-outline" onclick="addToWishlist('santhali-saree', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -686,7 +1370,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('hasuli-necklace')">
+<button class="btn btn-outline" onclick="addToWishlist('hasuli-necklace', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -711,7 +1395,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('clay-pot-set')">
+<button class="btn btn-outline" onclick="addToWishlist('clay-pot-set', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -736,7 +1420,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('bamboo-basket-set')">
+<button class="btn btn-outline" onclick="addToWishlist('bamboo-basket-set', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -761,7 +1445,7 @@
                                 </span>
                             </div>
                             <div class="product-actions">
-                                <button class="btn btn-outline" onclick="addToWishlist('nagada-drum')">
+<button class="btn btn-outline" onclick="addToWishlist('nagada-drum', event, this)">
                                     <i class="far fa-heart"></i>
                                 </button>
                                 <button class="btn btn-primary">Add to Cart</button>
@@ -841,86 +1525,241 @@
         </section>
     </main>
 
-    <!-- Floating Action Buttons -->
+    <!-- Enhanced Floating Action Buttons -->
     <div class="floating-actions">
-        <button class="fab" id="itinerary-fab" onclick="openItineraryPlanner()" title="AI Trip Planner">
+        <button class="fab fab-secondary" id="itinerary-fab" onclick="openItineraryPlanner()" title="AI Trip Planner">
             <i class="fas fa-route"></i>
+            <span class="fab-tooltip">Plan Trip</span>
         </button>
-        <button class="fab" id="chatbot-fab" onclick="openChatbot()" title="Chat Assistant">
-            <i class="fas fa-comments"></i>
+        <button class="fab fab-primary" id="chatbot-fab" onclick="openChatbot()" title="Chat with AI Guide">
+            <i class="fas fa-robot"></i>
+            <span class="fab-tooltip">AI Guide</span>
+            <div class="fab-notification" id="chat-notification">💬</div>
         </button>
-        <button class="fab" id="feedback-fab" onclick="openFeedback()" title="Feedback">
+        <button class="fab fab-tertiary" id="feedback-fab" onclick="openFeedback()" title="Rate Experience">
             <i class="fas fa-star"></i>
+            <span class="fab-tooltip">Feedback</span>
         </button>
     </div>
 
     <!-- Modals -->
-    <!-- AI Itinerary Planner Modal -->
+    <!-- Enhanced AI Trip Planner Modal -->
     <div id="itinerary-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal('itinerary-modal')">&times;</span>
-            <h2>AI Trip Planner</h2>
-            <div class="planner-form">
-                <div class="form-group">
-                    <label>Trip Duration</label>
-                    <select id="trip-duration">
-                        <option value="1">1 Day</option>
-                        <option value="3">3 Days</option>
-                        <option value="5">5 Days</option>
-                        <option value="7">1 Week</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>Interests (Select multiple)</label>
-                    <div class="checkbox-group">
-                        <label><input type="checkbox" value="nature"> Nature & Wildlife</label>
-                        <label><input type="checkbox" value="culture"> Cultural Heritage</label>
-                        <label><input type="checkbox" value="adventure"> Adventure Sports</label>
-                        <label><input type="checkbox" value="spiritual"> Spiritual Places</label>
+        <div class="modal-content planner-content">
+            <div class="planner-header">
+                <div class="planner-icon">
+                    <div class="icon-container">
+                        <i class="fas fa-route"></i>
+                        <div class="icon-glow"></div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label>Budget Range</label>
-                    <select id="budget-range">
-                        <option value="low">Budget (₹1000-3000/day)</option>
-                        <option value="mid">Mid-range (₹3000-6000/day)</option>
-                        <option value="high">Luxury (₹6000+/day)</option>
-                    </select>
+                <div class="planner-title">
+                    <h2>AI Trip Planner</h2>
+                    <p>Let's create your perfect Jharkhand adventure</p>
                 </div>
-                <button class="btn btn-primary" onclick="generateItinerary()">Generate Itinerary</button>
+                <button class="control-btn close-btn" onclick="closeModal('itinerary-modal')" title="Close">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
+            
+            <div class="planner-form">
+                <div class="form-step active" data-step="1">
+                    <h3><i class="fas fa-calendar-alt"></i> When are you planning to visit?</h3>
+                    <div class="form-group">
+                        <label>Trip Duration</label>
+                        <div class="duration-options">
+                            <div class="option-card" onclick="selectDuration(1)" data-value="1">
+                                <i class="fas fa-sun"></i>
+                                <span>1 Day</span>
+                                <small>Quick Getaway</small>
+                            </div>
+                            <div class="option-card" onclick="selectDuration(3)" data-value="3">
+                                <i class="fas fa-calendar-week"></i>
+                                <span>3 Days</span>
+                                <small>Weekend Trip</small>
+                            </div>
+                            <div class="option-card" onclick="selectDuration(5)" data-value="5">
+                                <i class="fas fa-calendar-day"></i>
+                                <span>5 Days</span>
+                                <small>Extended Stay</small>
+                            </div>
+                            <div class="option-card" onclick="selectDuration(7)" data-value="7">
+                                <i class="fas fa-calendar"></i>
+                                <span>1 Week</span>
+                                <small>Full Experience</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-step" data-step="2">
+                    <h3><i class="fas fa-heart"></i> What interests you most?</h3>
+                    <div class="form-group">
+                        <label>Select your interests (multiple allowed)</label>
+                        <div class="interest-grid">
+                            <div class="interest-card" onclick="toggleInterest('nature')" data-value="nature">
+                                <i class="fas fa-leaf"></i>
+                                <span>Nature & Wildlife</span>
+                                <small>Forests, waterfalls, wildlife</small>
+                            </div>
+                            <div class="interest-card" onclick="toggleInterest('culture')" data-value="culture">
+                                <i class="fas fa-users"></i>
+                                <span>Cultural Heritage</span>
+                                <small>Tribes, traditions, art</small>
+                            </div>
+                            <div class="interest-card" onclick="toggleInterest('adventure')" data-value="adventure">
+                                <i class="fas fa-mountain"></i>
+                                <span>Adventure Sports</span>
+                                <small>Trekking, climbing, sports</small>
+                            </div>
+                            <div class="interest-card" onclick="toggleInterest('spiritual')" data-value="spiritual">
+                                <i class="fas fa-om"></i>
+                                <span>Spiritual Places</span>
+                                <small>Temples, meditation, peace</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-step" data-step="3">
+                    <h3><i class="fas fa-wallet"></i> What's your budget range?</h3>
+                    <div class="form-group">
+                        <div class="budget-options">
+                            <div class="budget-card" onclick="selectBudget('low')" data-value="low">
+                                <i class="fas fa-coins"></i>
+                                <span>Budget</span>
+                                <div class="price">₹1,000-3,000<small>/day</small></div>
+                                <small>Hostels, local food, public transport</small>
+                            </div>
+                            <div class="budget-card" onclick="selectBudget('mid')" data-value="mid">
+                                <i class="fas fa-star"></i>
+                                <span>Mid-range</span>
+                                <div class="price">₹3,000-6,000<small>/day</small></div>
+                                <small>Hotels, good restaurants, private transport</small>
+                            </div>
+                            <div class="budget-card" onclick="selectBudget('high')" data-value="high">
+                                <i class="fas fa-gem"></i>
+                                <span>Luxury</span>
+                                <div class="price">₹6,000+<small>/day</small></div>
+                                <small>Resorts, fine dining, premium experiences</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="planner-navigation">
+                    <button class="btn btn-secondary" id="prev-btn" onclick="previousStep()" style="display: none;">
+                        <i class="fas fa-arrow-left"></i> Previous
+                    </button>
+                    <button class="btn btn-primary" id="next-btn" onclick="nextStep()">
+                        Next <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button class="btn btn-primary" id="generate-btn" onclick="generateItinerary()" style="display: none;">
+                        <i class="fas fa-magic"></i> Generate My Trip
+                    </button>
+                </div>
+            </div>
+            
             <div id="itinerary-result" class="itinerary-result" style="display: none;">
                 <!-- Generated itinerary will be displayed here -->
             </div>
         </div>
     </div>
 
-    <!-- Chatbot Modal -->
+    <!-- Enhanced AI Chatbot Modal -->
     <div id="chatbot-modal" class="modal">
         <div class="modal-content chatbot-content">
-            <span class="close" onclick="closeModal('chatbot-modal')">&times;</span>
             <div class="chatbot-header">
-                <h3>Tourism Assistant</h3>
-                <p>Ask me anything about Jharkhand tourism!</p>
+                <div class="ai-avatar-container">
+                    <div class="ai-avatar" id="ai-avatar">
+                        <div class="avatar-face">
+                            <div class="avatar-eyes">
+                                <div class="eye left-eye"></div>
+                                <div class="eye right-eye"></div>
+                            </div>
+                            <div class="avatar-mouth"></div>
+                        </div>
+                        <div class="avatar-glow"></div>
+                    </div>
+                    <div class="status-indicator" id="ai-status">
+                        <span class="status-text">Online</span>
+                        <div class="status-dot"></div>
+                    </div>
+                </div>
+                <div class="chatbot-title">
+                    <h3>Jharkhand AI Guide</h3>
+                    <p>Your intelligent tourism companion</p>
+                </div>
+                <div class="chatbot-controls">
+                    <button class="control-btn" id="voice-toggle" onclick="toggleVoice()" title="Toggle Voice">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                    <button class="control-btn" onclick="clearChat()" title="Clear Chat">
+                        <i class="fas fa-broom"></i>
+                    </button>
+                    <button class="control-btn close-btn" onclick="closeModal('chatbot-modal')" title="Close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
             </div>
+            
             <div class="chatbot-messages" id="chatbot-messages">
-                <div class="bot-message">
-                    <i class="fas fa-robot"></i>
-                    <div class="message-content">
-                        <p>Hello! I'm your virtual tourism assistant. I can help you with:</p>
-                        <ul>
-                            <li>Place recommendations</li>
-                            <li>Hotel bookings</li>
-                            <li>Cultural information</li>
-                            <li>Travel tips</li>
-                        </ul>
-                        <p>How can I assist you today?</p>
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-animation">
+                        <div class="floating-icon"><i class="fas fa-mountain"></i></div>
+                        <div class="floating-icon"><i class="fas fa-leaf"></i></div>
+                        <div class="floating-icon"><i class="fas fa-camera"></i></div>
+                    </div>
+                    <h4>Welcome to Jharkhand!</h4>
+                    <p>I'm your AI tourism guide. I can help you discover amazing places, plan your perfect trip, and answer any questions about Jharkhand.</p>
+                    <div class="suggestion-chips">
+                        <button class="suggestion-chip" onclick="sendSuggestion('Show me popular destinations')">
+                            <i class="fas fa-map-marked-alt"></i> Popular Destinations
+                        </button>
+                        <button class="suggestion-chip" onclick="sendSuggestion('Help me plan a 3-day trip')">
+                            <i class="fas fa-calendar"></i> Plan My Trip
+                        </button>
+                        <button class="suggestion-chip" onclick="sendSuggestion('What are the best hotels?')">
+                            <i class="fas fa-bed"></i> Best Hotels
+                        </button>
+                        <button class="suggestion-chip" onclick="sendSuggestion('Tell me about local culture')">
+                            <i class="fas fa-users"></i> Local Culture
+                        </button>
                     </div>
                 </div>
             </div>
+            
+            <div class="typing-indicator" id="typing-indicator" style="display: none;">
+                <div class="typing-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+                <span>AI Guide is typing...</span>
+            </div>
+            
+            <div class="quick-suggestions" id="quick-suggestions" style="display: none;">
+                <!-- Dynamic suggestions will be populated here -->
+            </div>
+            
             <div class="chatbot-input">
-                <input type="text" id="chat-input" placeholder="Type your message...">
-                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+                <div class="input-container">
+                    <input type="text" id="chat-input" placeholder="Ask me anything about Jharkhand..." maxlength="500">
+                    <div class="input-actions">
+                        <button class="action-btn" id="voice-btn" onclick="startVoiceRecording()" title="Voice Input">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <button class="action-btn" onclick="attachFile()" title="Attach Image">
+                            <i class="fas fa-camera"></i>
+                        </button>
+                        <button class="send-btn" onclick="sendChatMessage()" title="Send Message">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="character-count">
+                    <span id="char-count">0</span>/500
+                </div>
             </div>
         </div>
     </div>

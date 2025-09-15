@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jharkhand Tourism - Discover Eco & Cultural Heritage</title>
+    <meta name="description" content="Explore Jharkhand's natural beauty and rich cultural heritage. Find places to visit, hotels, government schemes, and local artisan marketplaces.">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <i class="fas fa-leaf"></i>
+                    <span>Jharkhand Tourism</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item">
+                        <a href="#home" class="nav-link active" data-tab="home">
+                            <i class="fas fa-home"></i>Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#places" class="nav-link" data-tab="places">
+                            <i class="fas fa-mountain"></i>Places to Visit
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#hotels" class="nav-link" data-tab="hotels">
+                            <i class="fas fa-bed"></i>Hotels & Homestays
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#schemes" class="nav-link" data-tab="schemes">
+                            <i class="fas fa-landmark"></i>Government Schemes
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#marketplace" class="nav-link" data-tab="marketplace">
+                            <i class="fas fa-store"></i>Marketplace
+                        </a>
+                    </li>
+                </ul>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Home Section -->
+        <section id="home" class="tab-content active">
+            <!-- Hero Section -->
+            <div class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Jharkhand's Natural & Cultural Heritage</h1>
+                    <p class="hero-subtitle">Experience the pristine beauty of waterfalls, wildlife, and rich tribal culture</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" onclick="showTab('places')">Explore Places</button>
+                        <button class="btn btn-secondary" onclick="openItineraryPlanner()">Plan Your Trip</button>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3" alt="Jharkhand Landscape" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Features Section -->
+            <div class="features">
+                <div class="container">
+                    <h2 class="section-title">Why Choose Jharkhand Tourism?</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <i class="fas fa-leaf feature-icon"></i>
+                            <h3>Eco-Friendly Tourism</h3>
+                            <p>Sustainable travel options that preserve our natural heritage</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-users feature-icon"></i>
+                            <h3>Cultural Immersion</h3>
+                            <p>Experience authentic tribal traditions and local customs</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-map-marked-alt feature-icon"></i>
+                            <h3>Smart Planning</h3>
+                            <p>AI-powered itinerary suggestions for the perfect trip</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fas fa-handshake feature-icon"></i>
+                            <h3>Community Support</h3>
+                            <p>Support local artisans, guides, and communities</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <div class="container">
+                    <h2 class="section-title">Quick Actions</h2>
+                    <div class="actions-grid">
+                        <div class="action-card" onclick="showTab('places')">
+                            <i class="fas fa-camera"></i>
+                            <h3>Find Places</h3>
+                            <p>Discover hidden gems</p>
+                        </div>
+                        <div class="action-card" onclick="showTab('hotels')">
+                            <i class="fas fa-bed"></i>
+                            <h3>Book Stay</h3>
+                            <p>Find accommodations</p>
+                        </div>
+                        <div class="action-card" onclick="openChatbot()">
+                            <i class="fas fa-robot"></i>
+                            <h3>Ask AI</h3>
+                            <p>Get personalized help</p>
+                        </div>
+                        <div class="action-card" onclick="showTab('marketplace')">
+                            <i class="fas fa-shopping-bag"></i>
+                            <h3>Shop Local</h3>
+                            <p>Support artisans</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Places to Visit Section -->
+        <section id="places" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Places to Visit</h2>
+                    <p class="section-subtitle">Explore Jharkhand's most beautiful destinations</p>
+                </div>
+
+                <!-- Places Grid -->
+                <div class="places-grid">
+                    <!-- Netarhat -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1506197603052-3cc9c3a201bd?ixlib=rb-4.0.3" alt="Netarhat Hill Station" loading="lazy">
+                            <div class="place-badge">Hill Station</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Netarhat</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Latehar District</p>
+                            <p class="place-description">Known as the "Queen of Chotanagpur", Netarhat offers breathtaking sunrises and sunsets with panoramic valley views.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">Sunrise Point</span>
+                                <span class="feature-tag">Valley Views</span>
+                                <span class="feature-tag">Cool Climate</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('netarhat')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('netarhat')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hundru Falls -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?ixlib=rb-4.0.3" alt="Hundru Falls" loading="lazy">
+                            <div class="place-badge">Waterfall</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Hundru Falls</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Ranchi District</p>
+                            <p class="place-description">A magnificent 98-meter tall waterfall formed by the Subarnarekha River, perfect for nature photography and picnics.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">98m Height</span>
+                                <span class="feature-tag">Photography</span>
+                                <span class="feature-tag">Picnic Spot</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('hundru')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('hundru')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Betla National Park -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1549366021-9f761d040a94?ixlib=rb-4.0.3" alt="Betla National Park" loading="lazy">
+                            <div class="place-badge">Wildlife</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Betla National Park</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Latehar District</p>
+                            <p class="place-description">Home to tigers, elephants, and diverse wildlife. Experience jungle safaris and ancient fort ruins within the park.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">Tiger Reserve</span>
+                                <span class="feature-tag">Safari</span>
+                                <span class="feature-tag">Fort Ruins</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('betla')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('betla')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Patratu Valley -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3" alt="Patratu Valley" loading="lazy">
+                            <div class="place-badge">Valley</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Patratu Valley</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Ramgarh District</p>
+                            <p class="place-description">A picturesque valley with lush green landscapes, perfect for adventure sports and nature walks.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">Adventure Sports</span>
+                                <span class="feature-tag">Nature Walks</span>
+                                <span class="feature-tag">Scenic Views</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('patratu')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('patratu')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Deoghar -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1590736969955-71cc94901144?ixlib=rb-4.0.3" alt="Deoghar Temple" loading="lazy">
+                            <div class="place-badge">Spiritual</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Deoghar</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Deoghar District</p>
+                            <p class="place-description">Famous for Baba Baidyanath Temple, one of the twelve Jyotirlingas, attracting millions of devotees annually.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">Jyotirlinga</span>
+                                <span class="feature-tag">Spiritual</span>
+                                <span class="feature-tag">Cultural Heritage</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('deoghar')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('deoghar')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Jagannath Temple Ranchi -->
+                    <div class="place-card">
+                        <div class="place-image">
+                            <img src="https://images.unsplash.com/photo-1580500550469-a1ca85aeaff1?ixlib=rb-4.0.3" alt="Jagannath Temple Ranchi" loading="lazy">
+                            <div class="place-badge">Temple</div>
+                        </div>
+                        <div class="place-content">
+                            <h3>Jagannath Temple</h3>
+                            <p class="place-location"><i class="fas fa-map-marker-alt"></i> Ranchi</p>
+                            <p class="place-description">A replica of the famous Puri Jagannath Temple, offering spiritual solace and beautiful architecture in the heart of Ranchi.</p>
+                            <div class="place-features">
+                                <span class="feature-tag">Architecture</span>
+                                <span class="feature-tag">Spiritual</span>
+                                <span class="feature-tag">City Center</span>
+                            </div>
+                            <div class="place-actions">
+                                <button class="btn btn-outline" onclick="showMap('jagannath')">View Map</button>
+                                <button class="btn btn-primary" onclick="showPlaceDetails('jagannath')">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hotels & Homestays Section -->
+        <section id="hotels" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Hotels & Homestays</h2>
+                    <p class="section-subtitle">Comfortable accommodations with authentic local experiences</p>
+                </div>
+
+                <div class="hotels-grid">
+                    <!-- Luxury Hotel -->
+                    <div class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3" alt="Forest Resort" loading="lazy">
+                            <div class="hotel-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.8</span>
+                            </div>
+                        </div>
+                        <div class="hotel-content">
+                            <h3>Netarhat Forest Resort</h3>
+                            <p class="hotel-location"><i class="fas fa-map-marker-alt"></i> Netarhat, Latehar</p>
+                            <p class="hotel-description">Luxury eco-resort nestled in the hills with panoramic valley views and modern amenities.</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity-tag">Wi-Fi</span>
+                                <span class="amenity-tag">Restaurant</span>
+                                <span class="amenity-tag">Spa</span>
+                                <span class="amenity-tag">Valley View</span>
+                            </div>
+                            <div class="hotel-price">
+                                <span class="price">₹3,500/night</span>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tribal Homestay -->
+                    <div class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3" alt="Tribal Homestay" loading="lazy">
+                            <div class="hotel-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.6</span>
+                            </div>
+                        </div>
+                        <div class="hotel-content">
+                            <h3>Authentic Tribal Homestay</h3>
+                            <p class="hotel-location"><i class="fas fa-map-marker-alt"></i> Khunti Village</p>
+                            <p class="hotel-description">Experience traditional tribal lifestyle with local families. Includes cultural programs and organic meals.</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity-tag">Cultural Shows</span>
+                                <span class="amenity-tag">Organic Food</span>
+                                <span class="amenity-tag">Nature Walks</span>
+                                <span class="amenity-tag">Handicraft Learning</span>
+                            </div>
+                            <div class="hotel-price">
+                                <span class="price">₹1,800/night</span>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Hotel -->
+                    <div class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3" alt="Budget Hotel" loading="lazy">
+                            <div class="hotel-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.2</span>
+                            </div>
+                        </div>
+                        <div class="hotel-content">
+                            <h3>Ranchi Business Hotel</h3>
+                            <p class="hotel-location"><i class="fas fa-map-marker-alt"></i> Main Road, Ranchi</p>
+                            <p class="hotel-description">Comfortable budget accommodation in the heart of Ranchi with easy access to major attractions.</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity-tag">Wi-Fi</span>
+                                <span class="amenity-tag">AC</span>
+                                <span class="amenity-tag">Parking</span>
+                                <span class="amenity-tag">24/7 Service</span>
+                            </div>
+                            <div class="hotel-price">
+                                <span class="price">₹1,200/night</span>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eco Lodge -->
+                    <div class="hotel-card">
+                        <div class="hotel-image">
+                            <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3" alt="Eco Lodge" loading="lazy">
+                            <div class="hotel-rating">
+                                <i class="fas fa-star"></i>
+                                <span>4.7</span>
+                            </div>
+                        </div>
+                        <div class="hotel-content">
+                            <h3>Betla Eco Lodge</h3>
+                            <p class="hotel-location"><i class="fas fa-map-marker-alt"></i> Near Betla National Park</p>
+                            <p class="hotel-description">Sustainable accommodation within walking distance of wildlife sanctuary with guided safari options.</p>
+                            <div class="hotel-amenities">
+                                <span class="amenity-tag">Safari Package</span>
+                                <span class="amenity-tag">Solar Power</span>
+                                <span class="amenity-tag">Nature Guides</span>
+                                <span class="amenity-tag">Organic Garden</span>
+                            </div>
+                            <div class="hotel-price">
+                                <span class="price">₹2,800/night</span>
+                                <button class="btn btn-primary">Book Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Section -->
+                <div class="reviews-section">
+                    <h3 class="reviews-title">Guest Reviews</h3>
+                    <div class="reviews-grid">
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=150" alt="Reviewer" class="reviewer-avatar">
+                                <div>
+                                    <h4>Amit Kumar</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>"Amazing experience at the tribal homestay. The family was incredibly welcoming and the cultural programs were authentic."</p>
+                        </div>
+
+                        <div class="review-card">
+                            <div class="reviewer-info">
+                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&w=150" alt="Reviewer" class="reviewer-avatar">
+                                <div>
+                                    <h4>Priya Sharma</h4>
+                                    <div class="review-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>"Netarhat Forest Resort exceeded expectations. The sunrise view from our room was breathtaking!"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Government Schemes Section -->
+        <section id="schemes" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Government Schemes</h2>
+                    <p class="section-subtitle">Tourism and economic support programs for sustainable development</p>
+                </div>
+
+                <div class="schemes-grid">
+                    <!-- Tourism Development Scheme -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-route"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>Jharkhand Tourism Development Scheme</h3>
+                            <p class="scheme-category">Infrastructure Development</p>
+                            <p class="scheme-description">Development of tourist circuits, infrastructure improvement, and promotion of eco-tourism destinations across the state.</p>
+                            <ul class="scheme-benefits">
+                                <li>Road connectivity improvement</li>
+                                <li>Tourist facility centers</li>
+                                <li>Digital promotion campaigns</li>
+                                <li>Skill development for local guides</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Budget: ₹500 Crores</span>
+                                <button class="btn btn-outline">Learn More</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tribal Craft Promotion -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>Tribal Handicraft Promotion Scheme</h3>
+                            <p class="scheme-category">Artisan Support</p>
+                            <p class="scheme-description">Supporting local artisans and craftspeople by providing market access, training, and financial assistance.</p>
+                            <ul class="scheme-benefits">
+                                <li>Direct market linkage</li>
+                                <li>Quality certification</li>
+                                <li>Digital marketplace access</li>
+                                <li>Skill enhancement workshops</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Budget: ₹150 Crores</span>
+                                <button class="btn btn-outline">Apply Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Homestay Development -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>Rural Homestay Development Program</h3>
+                            <p class="scheme-category">Community Tourism</p>
+                            <p class="scheme-description">Encouraging rural families to start homestay businesses with subsidies and training support.</p>
+                            <ul class="scheme-benefits">
+                                <li>50% subsidy on setup costs</li>
+                                <li>Hospitality training programs</li>
+                                <li>Online booking platform</li>
+                                <li>Marketing support</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Up to ₹2 Lakhs per family</span>
+                                <button class="btn btn-outline">Register</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Eco Tourism Initiative -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>Sustainable Eco-Tourism Initiative</h3>
+                            <p class="scheme-category">Environmental Conservation</p>
+                            <p class="scheme-description">Promoting responsible tourism practices while conserving natural resources and supporting local communities.</p>
+                            <ul class="scheme-benefits">
+                                <li>Conservation project funding</li>
+                                <li>Community guide training</li>
+                                <li>Waste management systems</li>
+                                <li>Wildlife protection programs</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Budget: ₹300 Crores</span>
+                                <button class="btn btn-outline">Participate</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Digital Tourism Platform -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>Digital Tourism Platform Initiative</h3>
+                            <p class="scheme-category">Technology Integration</p>
+                            <p class="scheme-description">Creating digital infrastructure for online bookings, virtual tours, and smart tourism management.</p>
+                            <ul class="scheme-benefits">
+                                <li>Mobile app development</li>
+                                <li>Virtual reality tours</li>
+                                <li>AI-powered recommendations</li>
+                                <li>Multi-language support</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Budget: ₹200 Crores</span>
+                                <button class="btn btn-outline">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MSME Tourism Support -->
+                    <div class="scheme-card">
+                        <div class="scheme-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <div class="scheme-content">
+                            <h3>MSME Tourism Support Scheme</h3>
+                            <p class="scheme-category">Business Development</p>
+                            <p class="scheme-description">Financial and technical support for small and medium enterprises in the tourism sector.</p>
+                            <ul class="scheme-benefits">
+                                <li>Low-interest loans</li>
+                                <li>Business development support</li>
+                                <li>Technology adoption assistance</li>
+                                <li>Market expansion help</li>
+                            </ul>
+                            <div class="scheme-actions">
+                                <span class="scheme-budget">Up to ₹50 Lakhs per unit</span>
+                                <button class="btn btn-outline">Apply</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="scheme-contact">
+                    <h3>Need Help with Scheme Applications?</h3>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>Helpline: 1800-123-4567</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: schemes@jharkhnadtourism.gov.in</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Office Hours: 9:00 AM - 6:00 PM</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Marketplace Section -->
+        <section id="marketplace" class="tab-content">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Local Marketplace</h2>
+                    <p class="section-subtitle">Support local artisans and discover authentic tribal handicrafts</p>
+                </div>
+
+                <!-- Categories Filter -->
+                <div class="marketplace-filters">
+                    <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+                    <button class="filter-btn" onclick="filterProducts('handicrafts')">Handicrafts</button>
+                    <button class="filter-btn" onclick="filterProducts('textiles')">Textiles</button>
+                    <button class="filter-btn" onclick="filterProducts('jewelry')">Jewelry</button>
+                    <button class="filter-btn" onclick="filterProducts('pottery')">Pottery</button>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="products-grid">
+                    <!-- Dokra Art -->
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c?ixlib=rb-4.0.3" alt="Dokra Art" loading="lazy">
+                            <div class="product-badge">Featured</div>
+                        </div>
+                        <div class="product-content">
+                            <h3>Traditional Dokra Art Elephant</h3>
+                            <p class="product-artist">By Ravi Mahato, Master Craftsman</p>
+                            <p class="product-description">Handcrafted bronze elephant using ancient lost-wax technique. Authentic tribal art from Jharkhand.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹2,500</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.9 (34 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('dokra-elephant')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tribal Textiles -->
+                    <div class="product-card" data-category="textiles">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1594736797933-d0eb48880952?ixlib=rb-4.0.3" alt="Tribal Textiles" loading="lazy">
+                            <div class="product-badge">New</div>
+                        </div>
+                        <div class="product-content">
+                            <h3>Handwoven Santhali Saree</h3>
+                            <p class="product-artist">By Sita Devi, Weaver Collective</p>
+                            <p class="product-description">Pure cotton saree with traditional Santhali motifs. Supports women's weaving cooperative.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹3,200</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.8 (22 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('santhali-saree')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tribal Jewelry -->
+                    <div class="product-card" data-category="jewelry">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?ixlib=rb-4.0.3" alt="Tribal Jewelry" loading="lazy">
+                        </div>
+                        <div class="product-content">
+                            <h3>Silver Hasuli Necklace</h3>
+                            <p class="product-artist">By Kumar Silversmith, Artisan Family</p>
+                            <p class="product-description">Traditional silver necklace worn by tribal women. Handcrafted with intricate patterns.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹4,800</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.7 (18 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('hasuli-necklace')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pottery -->
+                    <div class="product-card" data-category="pottery">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1578749556568-bc2c40e68b61?ixlib=rb-4.0.3" alt="Tribal Pottery" loading="lazy">
+                        </div>
+                        <div class="product-content">
+                            <h3>Traditional Clay Water Pot Set</h3>
+                            <p class="product-artist">By Lakshmi Potter Collective</p>
+                            <p class="product-description">Set of 3 handmade clay pots with traditional designs. Keeps water naturally cool.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹1,200</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.6 (45 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('clay-pot-set')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bamboo Crafts -->
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3" alt="Bamboo Crafts" loading="lazy">
+                        </div>
+                        <div class="product-content">
+                            <h3>Bamboo Storage Basket Set</h3>
+                            <p class="product-artist">By Tribal Bamboo Cooperative</p>
+                            <p class="product-description">Eco-friendly storage baskets made from locally sourced bamboo. Perfect for home organization.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹1,800</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.8 (67 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('bamboo-basket-set')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Musical Instruments -->
+                    <div class="product-card" data-category="handicrafts">
+                        <div class="product-image">
+                            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-4.0.3" alt="Tribal Drum" loading="lazy">
+                        </div>
+                        <div class="product-content">
+                            <h3>Traditional Nagada Drum</h3>
+                            <p class="product-artist">By Santosh Musical Instruments</p>
+                            <p class="product-description">Authentic tribal drum used in cultural performances. Handmade with natural materials.</p>
+                            <div class="product-details">
+                                <span class="product-price">₹2,800</span>
+                                <span class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    4.9 (12 reviews)
+                                </span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-outline" onclick="addToWishlist('nagada-drum')">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                                <button class="btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Artisans -->
+                <div class="featured-artisans">
+                    <h3 class="section-title">Meet Our Artisans</h3>
+                    <div class="artisans-grid">
+                        <div class="artisan-card">
+                            <img src="https://images.unsplash.com/photo-1600486913747-55e5470d6f40?ixlib=rb-4.0.3&w=300" alt="Ravi Mahato" class="artisan-photo">
+                            <div class="artisan-info">
+                                <h4>Ravi Mahato</h4>
+                                <p class="artisan-craft">Dokra Art Master</p>
+                                <p class="artisan-description">Third-generation Dokra artist specializing in traditional bronze casting techniques.</p>
+                                <button class="btn btn-outline">View Products</button>
+                            </div>
+                        </div>
+
+                        <div class="artisan-card">
+                            <img src="https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&w=300" alt="Sita Devi" class="artisan-photo">
+                            <div class="artisan-info">
+                                <h4>Sita Devi</h4>
+                                <p class="artisan-craft">Master Weaver</p>
+                                <p class="artisan-description">Leading the women's weaving cooperative, preserving traditional Santhali textile arts.</p>
+                                <button class="btn btn-outline">View Products</button>
+                            </div>
+                        </div>
+
+                        <div class="artisan-card">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&w=300" alt="Kumar Singh" class="artisan-photo">
+                            <div class="artisan-info">
+                                <h4>Kumar Singh</h4>
+                                <p class="artisan-craft">Silver Craftsman</p>
+                                <p class="artisan-description">Skilled silversmith creating traditional tribal jewelry with contemporary appeal.</p>
+                                <button class="btn btn-outline">View Products</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cultural Events -->
+                <div class="cultural-events">
+                    <h3 class="section-title">Upcoming Cultural Events</h3>
+                    <div class="events-grid">
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="date-day">15</span>
+                                <span class="date-month">NOV</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Sohrai Art Festival</h4>
+                                <p class="event-location">Hazaribagh</p>
+                                <p class="event-description">Traditional wall painting exhibition and workshop</p>
+                                <button class="btn btn-outline">Register</button>
+                            </div>
+                        </div>
+
+                        <div class="event-card">
+                            <div class="event-date">
+                                <span class="date-day">22</span>
+                                <span class="date-month">NOV</span>
+                            </div>
+                            <div class="event-info">
+                                <h4>Tribal Dance Festival</h4>
+                                <p class="event-location">Ranchi</p>
+                                <p class="event-description">Cultural performances by various tribal communities</p>
+                                <button class="btn btn-outline">Book Tickets</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Floating Action Buttons -->
+    <div class="floating-actions">
+        <button class="fab" id="itinerary-fab" onclick="openItineraryPlanner()" title="AI Trip Planner">
+            <i class="fas fa-route"></i>
+        </button>
+        <button class="fab" id="chatbot-fab" onclick="openChatbot()" title="Chat Assistant">
+            <i class="fas fa-comments"></i>
+        </button>
+        <button class="fab" id="feedback-fab" onclick="openFeedback()" title="Feedback">
+            <i class="fas fa-star"></i>
+        </button>
+    </div>
+
+    <!-- Modals -->
+    <!-- AI Itinerary Planner Modal -->
+    <div id="itinerary-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('itinerary-modal')">&times;</span>
+            <h2>AI Trip Planner</h2>
+            <div class="planner-form">
+                <div class="form-group">
+                    <label>Trip Duration</label>
+                    <select id="trip-duration">
+                        <option value="1">1 Day</option>
+                        <option value="3">3 Days</option>
+                        <option value="5">5 Days</option>
+                        <option value="7">1 Week</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Interests (Select multiple)</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" value="nature"> Nature & Wildlife</label>
+                        <label><input type="checkbox" value="culture"> Cultural Heritage</label>
+                        <label><input type="checkbox" value="adventure"> Adventure Sports</label>
+                        <label><input type="checkbox" value="spiritual"> Spiritual Places</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Budget Range</label>
+                    <select id="budget-range">
+                        <option value="low">Budget (₹1000-3000/day)</option>
+                        <option value="mid">Mid-range (₹3000-6000/day)</option>
+                        <option value="high">Luxury (₹6000+/day)</option>
+                    </select>
+                </div>
+                <button class="btn btn-primary" onclick="generateItinerary()">Generate Itinerary</button>
+            </div>
+            <div id="itinerary-result" class="itinerary-result" style="display: none;">
+                <!-- Generated itinerary will be displayed here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Modal -->
+    <div id="chatbot-modal" class="modal">
+        <div class="modal-content chatbot-content">
+            <span class="close" onclick="closeModal('chatbot-modal')">&times;</span>
+            <div class="chatbot-header">
+                <h3>Tourism Assistant</h3>
+                <p>Ask me anything about Jharkhand tourism!</p>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="bot-message">
+                    <i class="fas fa-robot"></i>
+                    <div class="message-content">
+                        <p>Hello! I'm your virtual tourism assistant. I can help you with:</p>
+                        <ul>
+                            <li>Place recommendations</li>
+                            <li>Hotel bookings</li>
+                            <li>Cultural information</li>
+                            <li>Travel tips</li>
+                        </ul>
+                        <p>How can I assist you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chat-input" placeholder="Type your message...">
+                <button onclick="sendChatMessage()"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback Modal -->
+    <div id="feedback-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal('feedback-modal')">&times;</span>
+            <h2>Share Your Feedback</h2>
+            <div class="feedback-form">
+                <div class="form-group">
+                    <label>Overall Experience</label>
+                    <div class="rating-input">
+                        <i class="fas fa-star" onclick="setRating(1)"></i>
+                        <i class="fas fa-star" onclick="setRating(2)"></i>
+                        <i class="fas fa-star" onclick="setRating(3)"></i>
+                        <i class="fas fa-star" onclick="setRating(4)"></i>
+                        <i class="fas fa-star" onclick="setRating(5)"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Your Comments</label>
+                    <textarea id="feedback-comments" rows="4" placeholder="Tell us about your experience..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Email (Optional)</label>
+                    <input type="email" id="feedback-email" placeholder="your@email.com">
+                </div>
+                <button class="btn btn-primary" onclick="submitFeedback()">Submit Feedback</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Place Details Modal -->
+    <div id="place-details-modal" class="modal">
+        <div class="modal-content place-modal">
+            <span class="close" onclick="closeModal('place-details-modal')">&times;</span>
+            <div id="place-details-content">
+                <!-- Place details will be populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Jharkhand Tourism</h3>
+                    <p>Discover the natural beauty and rich cultural heritage of Jharkhand. Experience sustainable tourism that supports local communities.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#places">Places to Visit</a></li>
+                        <li><a href="#hotels">Accommodations</a></li>
+                        <li><a href="#schemes">Government Schemes</a></li>
+                        <li><a href="#marketplace">Local Marketplace</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Travel Guidelines</a></li>
+                        <li><a href="#">Safety Information</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> +91 1234567890</li>
+                        <li><i class="fas fa-envelope"></i> info@jharkhnadtourism.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Tourism Bhawan, Ranchi</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jharkhand Tourism Department. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
